@@ -1,41 +1,75 @@
 <template>
-  <div>
-    <v-btn @click="login('GITHUB')">Login with Github</v-btn>
-    <v-btn @click="login('DINGTALK')">Login with DingTalk</v-btn>
+  <div class="launch">
+    <app :id="$route.params.app" @ready="ready"></app>
+    <div :style="style">
+      <h2>Login to {{ app.name }} with</h2>
+      <div class="list">
+        <v-btn v-for="(item, i) in items" :key="i" @click="login(item)" :color="item.color" style="margin: 10px; padding: 20px;" outlined rounded>
+          <img style="width: 25px; margin-right: 20px;" :src="item.icon">
+          {{ item.name }}
+        </v-btn>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-import axios from 'axios'
+import App from '@/components/App.vue'
+import platforms from '../platforms'
 
 export default {
   name: 'Launch',
   data: () => ({
-    app: {},
-    appid: '',
-    platforms: {
-      GITHUB: 'https://github.com/login/oauth/authorize?client_id=be701ef88116790b5964&state=GITHUB.test',
-      DINGTALK: ['https://oapi.dingtalk.com/connect/qrconnect?appid=dingoaprellztzihaw4y82&response_type=code&scope=snsapi_login&state=DINGTALK.test&redirect_uri=https%3A%2F%2Faauth.link%2Freenter.html',
-        'https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=dingoaprellztzihaw4y82&response_type=code&scope=snsapi_auth&state=STATE&redirect_uri=https%3A%2F%2Faauth.link%2Freenter.html']
-    }
+    app: { name: 'Loading' },
+    style: 'height: 0px;'
   }),
-  async mounted () {
-    const { data } = await axios.get(`https://api.aauth.link/login?app=${this.$route.params.app}`)
-    this.app = data
+  components: {
+    App
+  },
+  computed: {
+    items () {
+      return this.app.platform
+        ? platforms.filter(x => this.app.platform.includes(x.key))
+        : platforms
+    }
   },
   methods: {
+    ready (app) {
+      this.app = app
+      const factor = 12000 / Math.min(0.6 * window.innerWidth, 600)
+      this.$nextTick(() => {
+        this.style = `height: ${this.items.length * factor + 150}px;`
+      })
+    },
     login (pl) {
-      if (pl === 'GITHUB') {
-        window.location.href = this.platforms[pl]
-      } else if (pl === 'DINGTALK') {
-        if (navigator.userAgent.includes('DingTalk')) {
-          window.location.href = this.platforms[pl][1]
-        } else {
-          window.location.href = this.platforms[pl][0]
-        }
-      }
+      pl.go(pl.key + '.' + this.$route.params.app + '.' + this.$route.query.state)
     }
   }
 }
 </script>
 
-<style></style>
+<style scoped>
+div.launch {
+  color: #333;
+  width: 100vw;
+  min-height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.launch * {
+  transition: all 0.5s ease;
+  overflow-y: hidden;
+}
+
+div.list {
+  width: 600px;
+  max-width: 90vw;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+</style>
