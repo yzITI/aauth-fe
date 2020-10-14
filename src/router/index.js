@@ -1,19 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Index from '@/views/Index.vue'
 
 Vue.use(VueRouter)
-// component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // }
+  {
+    path: '/',
+    name: 'Index',
+    component: Index
+  },
+  {
+    path: '/land',
+    name: 'Land',
+    component: () => import(/* webpackChunkName: "land" */ '../views/Land.vue')
+  },
+  {
+    path: '/launch/:app',
+    name: 'Launch',
+    component: () => import(/* webpackChunkName: "launch" */ '../views/Launch.vue')
+  }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
