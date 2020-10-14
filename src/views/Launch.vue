@@ -4,7 +4,7 @@
     <h2>{{ tip }}</h2>
     <div :style="style">
       <div class="list">
-        <v-btn v-for="(item, i) in items" :key="i" @click="login(item)" :color="item.color" style="margin: 10px; padding: 20px;" outlined rounded>
+        <v-btn v-for="(item, i) in items" :key="i" @click="login(item)" :color="item.color" style="margin: 10px; padding: 20px;" outlined rounded large>
           <img style="width: 25px; margin-right: 20px;" :src="item.icon">
           {{ item.name }}
         </v-btn>
