@@ -1,8 +1,8 @@
 <template>
   <div class="launch">
-    <app :id="$route.params.app" @ready="ready"></app>
+    <app :id="$route.params.app" @ready="ready" @error="error"></app>
+    <h2>{{ tip }}</h2>
     <div :style="style">
-      <h2>Login to {{ app.name }} with</h2>
       <div class="list">
         <v-btn v-for="(item, i) in items" :key="i" @click="login(item)" :color="item.color" style="margin: 10px; padding: 20px;" outlined rounded>
           <img style="width: 25px; margin-right: 20px;" :src="item.icon">
@@ -19,8 +19,9 @@ import platforms from '../platforms'
 export default {
   name: 'Launch',
   data: () => ({
-    app: { name: 'Loading' },
-    style: 'height: 0px;'
+    app: {},
+    style: 'height: 0px;',
+    tip: 'Loading...'
   }),
   components: {
     App
@@ -37,8 +38,12 @@ export default {
       this.app = app
       const factor = 12000 / Math.min(0.6 * window.innerWidth, 600)
       this.$nextTick(() => {
-        this.style = `height: ${this.items.length * factor + 150}px;`
+        this.style = `height: ${this.items.length * factor + 100}px;`
+        this.tip = 'Login to ' + app.name + ' with'
       })
+    },
+    error (err) {
+      this.tip = err
     },
     login (pl) {
       pl.go(pl.key + '.' + this.$route.params.app + '.' + this.$route.query.state)
