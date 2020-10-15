@@ -19,7 +19,7 @@ export default {
     platform: '',
     appid: '',
     userid: '',
-    state: undefined,
+    state: '',
     tip: 'Authenticating...',
     app: {},
     token: '',
@@ -71,8 +71,8 @@ export default {
         window.location.href = url
       } catch (err) {
         this.tip = err.response.data || 'Network Error'
+        this.jumpLoading = false
       }
-      this.jumpLoading = false
     }
   }
 }
