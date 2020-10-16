@@ -22,5 +22,14 @@ export default [
           : 'https://oapi.dingtalk.com/connect/qrconnect?appid=dingoaprellztzihaw4y82&response_type=code&scope=snsapi_login&redirect_uri=https%3A%2F%2Faauth.link%2Freenter.html&state=' + state
       }
     }
+  },
+  {
+    key: 'XYZSAS',
+    name: '学生事务系统',
+    color: 'black',
+    icon: '/platforms/XYZSAS.png',
+    go: (state) => {
+      window.location.href = 'http://sas.yzzx.org/user/#/?c=AAUTH&state=' + state
+    }
   }
 ]
