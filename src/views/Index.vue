@@ -80,7 +80,7 @@ a {
   display: flex;
   margin: 40px;
 }
-@media (max-width: 400px) {
+@media (max-width: 440px) {
   h2 {
     font-size: 2rem;
     height: 60px;
