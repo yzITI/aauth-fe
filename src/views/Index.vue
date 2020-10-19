@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     github () {
-      window.location.href = 'https://github.com/yzITI/matrix-fe'
+      window.location.href = 'https://github.com/yzITI/aauth-fe'
     }
   }
 }
