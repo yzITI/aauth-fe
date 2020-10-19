@@ -8,8 +8,10 @@
         large
         dark
         color="#D9483B"
-        style="margin: 0 10px;">
-        GET STARTED
+        style="margin: 0 10px;"
+        @click="qq">
+        <img style="width: 20px; margin-right: 20px;" src="/platforms/qq.png">
+        QQ登陆
       </v-btn>
       <v-btn
         rounded
@@ -39,6 +41,9 @@ export default {
   methods: {
     github () {
       window.location.href = 'https://github.com/yzITI/aauth-fe'
+    },
+    qq () {
+      this.$router.push('/launch/qq')
     }
   }
 }
