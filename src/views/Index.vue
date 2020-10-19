@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <img src="../assets/bigger_logo.png" alt="logo">
-    <h2 :class="{ fold: hide }">Auth with anything</h2>
+    <h2 :class="{ fold: hide }">Auth with Anything</h2>
     <div class="button" :class="{ fold: hide }">
       <v-btn
         rounded
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     github () {
-      window.location.href = 'https://github.com/yzITI/matrix-fe'
+      window.location.href = 'https://github.com/yzITI/aauth-fe'
     }
   }
 }
@@ -80,7 +80,7 @@ a {
   display: flex;
   margin: 40px;
 }
-@media (max-width: 420px) {
+@media (max-width: 400px) {
   h2 {
     font-size: 2rem;
     height: 60px;
