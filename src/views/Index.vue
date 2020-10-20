@@ -43,7 +43,7 @@ export default {
       window.location.href = 'https://github.com/yzITI/aauth-fe'
     },
     qq () {
-      this.$router.push('/launch/qq')
+      window.location.href = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101907335&redirect_uri=https%3A%2F%2Faauth.link%2Freenter.html&state=test'
     }
   }
 }
