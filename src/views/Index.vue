@@ -8,10 +8,8 @@
         large
         dark
         color="#D9483B"
-        style="margin: 0 10px;"
-        @click="qq">
-        <img style="width: 20px; margin-right: 20px;" src="/platforms/qq.png">
-        QQ登陆
+        style="margin: 0 10px;">
+        Get Started
       </v-btn>
       <v-btn
         rounded

@@ -31,5 +31,16 @@ export default [
     go: (state) => {
       window.location.href = 'http://sas.yzzx.org/user/#/?c=AAUTH&state=' + state
     }
+  },
+  {
+    key: 'QQ',
+    name: 'QQ登陆',
+    color: 'primary',
+    icon: '/platforms/qq.png',
+    go: (state) => {
+      window.location.href = window.innerWidth < 900
+        ? 'https://graph.z.qq.com/moc2/authorize?client_id=101907335&response_type=code&redirect_uri=https%3A%2F%2Faauth.link%2Freenter.html&state=' + state
+        : 'https://graph.qq.com/oauth2.0/authorize?client_id=101907335&response_type=code&redirect_uri=https%3A%2F%2Faauth.link%2Freenter.html&state=' + state
+    }
   }
 ]
