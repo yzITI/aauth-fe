@@ -2,14 +2,14 @@
   <div class="launch">
     <app :id="$route.params.app" @ready="ready" @error="error"></app>
     <h2>{{ tip }}</h2>
-    <div :style="style">
-      <div class="list">
+    <v-expand-transition>
+      <div v-if="show" class="list">
         <v-btn v-for="(item, i) in items" :key="i" @click="login(item)" :color="item.color" style="margin: 10px;" outlined rounded large>
           <img style="width: 25px; margin-right: 20px;" :src="item.icon">
           {{ item.name }}
         </v-btn>
       </div>
-    </div>
+    </v-expand-transition>
   </div>
 </template>
 <script>
@@ -20,7 +20,7 @@ export default {
   name: 'Launch',
   data: () => ({
     app: {},
-    style: 'height: 0px;',
+    show: false,
     tip: 'Loading...'
   }),
   components: {
@@ -36,11 +36,8 @@ export default {
   methods: {
     ready (app) {
       this.app = app
-      const factor = 12000 / Math.min(0.6 * window.innerWidth, 600)
-      this.$nextTick(() => {
-        this.style = `height: ${this.items.length * factor + 100}px;`
-        this.tip = 'Login to ' + app.name
-      })
+      this.show = true
+      this.tip = 'Login to ' + app.name
     },
     error (err) {
       this.tip = err
@@ -66,11 +63,9 @@ div.launch {
 
 div.launch * {
   transition: all 0.5s ease;
-  overflow-y: hidden;
 }
 
 div.list {
-  width: 600px;
   max-width: 90vw;
   margin: 20px auto;
   display: flex;

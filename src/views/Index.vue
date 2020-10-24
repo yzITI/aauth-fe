@@ -1,26 +1,30 @@
 <template>
   <div class="index">
     <img src="../assets/bigger_logo.png" alt="logo">
-    <h2 :class="{ fold: hide }">Auth with Anything</h2>
-    <div class="button" :class="{ fold: hide }">
-      <v-btn
-        rounded
-        large
-        dark
-        color="#D9483B"
-        style="margin: 0 10px;">
-        Get Started
-      </v-btn>
-      <v-btn
-        rounded
-        large
-        color="#f6f6f6"
-        style="margin: 0 10px;"
-        @click="github">
-        <img style="width: 25px; margin-right: 20px;" src="/platforms/github.png">
-        GitHub
-      </v-btn>
-    </div>
+    <v-expand-transition>
+      <div v-if="show">
+        <h2>Auth with Anything</h2>
+        <div class="button">
+          <v-btn
+            rounded
+            large
+            dark
+            color="#D9483B"
+            style="margin: 0 10px;">
+            Get Started
+          </v-btn>
+          <v-btn
+            rounded
+            large
+            color="#f6f6f6"
+            style="margin: 0 10px;"
+            @click="github">
+            <img style="width: 25px; margin-right: 20px;" src="/platforms/github.png">
+            GitHub
+          </v-btn>
+        </div>
+      </div>
+    </v-expand-transition>
     <a href="http://beian.miit.gov.cn/" style="color: #e4e6eb;">苏ICP备20040754号-1</a>
   </div>
 </template>
@@ -29,11 +33,11 @@
 export default {
   name: 'Index',
   data: () => ({
-    hide: true
+    show: false
   }),
   mounted () {
     setTimeout(() => {
-      this.hide = false
+      this.show = true
     }, 1000)
   },
   methods: {
@@ -59,7 +63,6 @@ div.index * {
   overflow-y: hidden;
 }
 h2 {
-  height: 76px;
   color: #273849;
   font-size: 3.2em;
   font-weight: 300;
@@ -76,17 +79,13 @@ a {
   text-decoration: none;
 }
 .button {
-  height: 50px;
   display: flex;
-  margin: 40px;
+  justify-content: center;
+  padding: 40px 0;
 }
 @media (max-width: 440px) {
   h2 {
     font-size: 2rem;
-    height: 60px;
   }
-}
-.fold {
-  height: 0;
 }
 </style>

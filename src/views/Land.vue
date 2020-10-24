@@ -1,10 +1,14 @@
 <template>
   <div class="land">
-    <app v-if="step > 0" :id="appid" @ready="ready"></app>
+    <v-expand-transition>
+      <app v-if="step > 0" :id="appid" @ready="ready"></app>
+    </v-expand-transition>
     <h1>{{ tip }}</h1>
-    <div class="menu" :style="menuStyle">
-      <v-btn style="margin: 20px;" color="primary" outlined rounded large :loading="jumpLoading" @click="jump">{{ app.name }}</v-btn>
-    </div>
+    <v-expand-transition>
+      <div v-if="step > 2">
+        <v-btn style="margin: 20px;" color="primary" outlined rounded large :loading="jumpLoading" @click="jump">{{ app.name }}</v-btn>
+      </div>
+    </v-expand-transition>
   </div>
 </template>
 
@@ -28,11 +32,6 @@ export default {
   components: {
     App
   },
-  computed: {
-    menuStyle () {
-      return this.step >= 2 ? 'height: 200px;' : ''
-    }
-  },
   async mounted () {
     try {
       const raw = this.$route.query.state.split('.')
@@ -41,6 +40,7 @@ export default {
       this.code = this.$route.query.code
       if (raw[2]) this.state = raw[2]
       if (!this.platform || !this.appid || !this.code) throw new Error()
+      this.step++
       this.auth()
     } catch {
       this.tip = 'Oops, it seems that you get lost!'
@@ -88,11 +88,5 @@ div.land {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-div.menu {
-  transition: all 0.5s ease;
-  height: 0px;
-  overflow-y: hidden;
 }
 </style>
