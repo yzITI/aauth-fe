@@ -43,7 +43,7 @@ export default {
       this.tip = err
     },
     login (pl) {
-      pl.go(pl.key + '.' + this.$route.params.app + '.' + this.$route.query.state)
+      pl.go(pl.key + '.' + this.$route.params.app + '.' + (this.$route.query.state || ''))
     }
   }
 }

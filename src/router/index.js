@@ -11,6 +11,11 @@ const routes = [
     component: Index
   },
   {
+    path: '/guide',
+    name: 'Guide',
+    component: () => import(/* webpackChunkName: "guide" */ '../views/Guide.vue')
+  },
+  {
     path: '/land',
     name: 'Land',
     component: () => import(/* webpackChunkName: "land" */ '../views/Land.vue')

@@ -10,7 +10,8 @@
             large
             dark
             color="#D9483B"
-            style="margin: 0 10px;">
+            style="margin: 0 10px;"
+            @click="$router.push('/guide')">
             Get Started
           </v-btn>
           <v-btn
