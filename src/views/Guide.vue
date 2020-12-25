@@ -2,8 +2,16 @@
   <div class="guide">
     <h1>Aauth Guide</h1>
     <p>Aauth provides fourth party authentication which allows developers to integrate Oauth platforms with a few clicks.</p>
-    <h2>Prerequesites</h2>
-    <p>a properly registered application</p>
+    <h2>App</h2>
+    <p>As a developer, you need a properly registered application</p>
+    <v-btn
+      rounded
+      dark
+      color="#D9483B"
+      style="margin: 0 10px;"
+      @click="manage">
+      Manage App
+    </v-btn>
     <h2>Aauth Protocol</h2>
     <p>Direct user to launch page <code>https://aauth.link/#/launch/appId[?state=STATE]</code></p>
     <p>After user login, the page will be redirected to the redirect URL with query parameters <code>code[, state]</code>.</p>
@@ -13,7 +21,12 @@
 
 <script>
 export default {
-  name: 'Guide'
+  name: 'Guide',
+  methods: {
+    manage () {
+      this.$router.push('/launch/aauth')
+    }
+  }
 }
 </script>
 

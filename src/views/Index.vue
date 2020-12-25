@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <img src="../assets/bigger_logo.png" alt="logo">
+    <img src="/img/bigger_logo.png" alt="logo">
     <v-expand-transition>
       <div v-if="show">
         <h2>Auth with Anything</h2>

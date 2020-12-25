@@ -14,7 +14,7 @@
 
 <script>
 import App from '@/components/App.vue'
-
+const SS = window.sessionStorage
 export default {
   name: 'Land',
   data: () => ({
@@ -63,6 +63,12 @@ export default {
       }
     },
     async jump () {
+      if (this.appid === 'aauth') { // internal
+        SS.token = this.token
+        SS.user = this.userid
+        this.$router.push('/list')
+        return
+      }
       try {
         this.jumpLoading = true
         const { data } = await this.$ajax.put('/login', { user: this.userid, app: this.appid, token: this.token })
