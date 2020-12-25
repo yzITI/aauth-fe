@@ -40,6 +40,7 @@
         <v-card-subtitle>{{ app.id }}</v-card-subtitle>
         <v-form style="padding: 10px 30px;">
           <v-text-field outlined dense label="Name" v-model="app.name" :error-messages="error"></v-text-field>
+          <v-text-field outlined dense label="Redirect URL" v-model="app.redirect"></v-text-field>
           <v-select outlined dense label="Platform" v-model="app.platform" :items="platforms" multiple persistent-hint hint="No platform means all allowed"></v-select>
           <v-text-field outlined dense label="Icon URL" v-model="app.icon"></v-text-field>
           <div style="height: 100px;">
@@ -85,6 +86,7 @@ export default {
     edit (id) {
       if (this.loading) return
       this.app.name = this.list[id].name
+      this.app.redirect = this.list[id].redirect
       if (this.list[id].icon) this.app.icon = this.list[id].icon
       if (this.list[id].platform) this.app.platform = this.list[id].platform.split(',')
       this.app.id = id
@@ -125,8 +127,8 @@ export default {
         })
     },
     async submit () {
-      if (!this.app.name) {
-        this.error = 'name is required'
+      if (!this.app.name || !this.app.redirect) {
+        this.error = 'Name and Redirect URL are required'
         return
       }
       this.loading = true
