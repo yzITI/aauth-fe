@@ -132,7 +132,7 @@ export default {
         return
       }
       this.loading = true
-      const data = { name: this.app.name }
+      const data = { name: this.app.name, redirect: this.app.redirect }
       if (this.app.id) data.id = this.app.id
       if (this.app.icon) data.icon = this.app.icon
       if (this.app.platform && this.app.platform.length) data.platform = this.app.platform.join(',')
