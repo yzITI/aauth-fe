@@ -2,6 +2,8 @@
   <div class="list">
     <h1>Your App</h1>
     <p v-if="tip">{{ tip }}</p>
+    <p v-if="list.length">Click on cards to view App information (with AppID).</p>
+    <p v-if="list.length" style="color: red;">Be careful! There is no confirm dialog. When clicking on the key icon, app secret will be requested, which will cause the invalidation of the old secret.</p>
     <v-card v-for="(a, id) in list" :key="id" style="margin: 20px;" @click="edit(id)">
       <v-card-title>
         <img style="width: 50px; height: 50px; margin-right: 10px;" v-if="a.icon" :src="a.icon">
@@ -28,7 +30,7 @@
       <v-card>
         <v-card-title>App Secret</v-card-title>
         <v-card-text>
-          <p style="color: red;">Please keep the secret safe. After closing this dialog, you will not have chances to access it again. Next request of secret will cause the generation of a new secret and the invalidation of the old secret.</p>
+          <p style="color: red;">Please keep the secret safe. After closing this dialog, you will not have any chance to see it again.</p>
           <p>Your App Secret is</p>
           <code>{{ secret }}</code>
         </v-card-text>
@@ -36,7 +38,7 @@
     </v-dialog>
     <v-bottom-sheet v-model="sheet" inset>
       <v-sheet>
-        <v-card-title>App</v-card-title>
+        <v-card-title>App Info</v-card-title>
         <v-card-subtitle>{{ app.id }}</v-card-subtitle>
         <v-form style="padding: 10px 30px;">
           <v-text-field outlined dense label="Name" v-model="app.name" :error-messages="error"></v-text-field>

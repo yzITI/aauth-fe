@@ -13,9 +13,9 @@
       Manage App
     </v-btn>
     <h2>Aauth Protocol</h2>
-    <p>Direct user to launch page <code>https://aauth.link/#/launch/appId[?state=STATE]</code></p>
+    <p>Direct user to launch page <code>https://aauth.link/#/launch/AppID[?state=STATE]</code></p>
     <p>After user login, the page will be redirected to the redirect URL with query parameters <code>code[, state]</code>.</p>
-    <p>To get user information and unique id, send https request to <code>https://api.aauth.link/login?app=appId&secret=appSecret&code=code</code> with <code>DELETE</code> method, the response will be in JSON format <code> { "id": "unique id", "name": "user name", ... }</code>.</p>
+    <p>To get user information and unique id, send https request to <code>https://api.aauth.link/login?app=AppID&secret=AppSecret&code=code</code> with <code>DELETE</code> method, the response will be in JSON format <code> { "id": "unique id", "name": "user name", ... }</code>.</p>
   </div>
 </template>
 
