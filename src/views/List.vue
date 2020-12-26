@@ -2,8 +2,8 @@
   <div class="list">
     <h1>Your App</h1>
     <p v-if="tip">{{ tip }}</p>
-    <p v-if="list.length">Click on cards to view App information (with AppID).</p>
-    <p v-if="list.length" style="color: red;">Be careful! There is no confirm dialog. When clicking on the key icon, app secret will be requested, which will cause the invalidation of the old secret.</p>
+    <p v-else>Click on cards to view App information (with AppID).</p>
+    <p v-if="!tip" style="color: red;">Be careful! There is no confirm dialog. When clicking on the key icon, app secret will be requested, which will cause the invalidation of the old secret.</p>
     <v-card v-for="(a, id) in list" :key="id" style="margin: 20px;" @click="edit(id)">
       <v-card-title>
         <img style="width: 50px; height: 50px; margin-right: 10px;" v-if="a.icon" :src="a.icon">
