@@ -40,5 +40,14 @@ export default [
     go: (state) => {
       window.location.href = 'http://sas.yzzx.org/user/#/?c=AAUTH&state=' + state
     }
+  },
+  {
+    key: 'FACEBOOK',
+    name: 'Facebook',
+    color: '#1877f2',
+    icon: '/platforms/facebook.png',
+    go: (state) => {
+      window.location.href = 'https://www.facebook.com/v9.0/dialog/oauth?client_id=919042828841874&redirect_uri=https%3A%2F%2Faauth.link%2Freenter.html&state=' + state
+    }
   }
 ]
