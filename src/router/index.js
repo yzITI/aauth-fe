@@ -11,6 +11,11 @@ const routes = [
     component: Index
   },
   {
+    path: '/guide',
+    name: 'Guide',
+    component: () => import(/* webpackChunkName: "guide" */ '../views/Guide.vue')
+  },
+  {
     path: '/land',
     name: 'Land',
     component: () => import(/* webpackChunkName: "land" */ '../views/Land.vue')
@@ -24,6 +29,11 @@ const routes = [
     path: '/explode',
     name: 'Explode',
     component: () => import(/* webpackChunkName: "explode" */ '../views/Explode.vue')
+  },
+  {
+    path: '/list',
+    name: 'List',
+    component: () => import(/* webpackChunkName: "list" */ '../views/List.vue')
   }
 ]
 

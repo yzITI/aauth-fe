@@ -1,9 +1,9 @@
 <template>
   <div class="app">
     <img v-if="icon" :alt="name" :src="icon">
-    <img v-else style="object-fit: contain; object-position: center;" src="../assets/loading.gif">
+    <img v-else style="object-fit: contain; object-position: center;" src="/img/loading.gif">
     <v-icon style="margin: 0 20px; font-size: 2rem;">mdi-arrow-left-right</v-icon>
-    <img src="../assets/logo.png">
+    <img src="/img/logo.png">
   </div>
 </template>
 
