@@ -38,7 +38,7 @@ export default [
     color: 'black',
     icon: '/platforms/XYZSAS.png',
     go: (state) => {
-      window.location.href = 'http://sas.yzzx.org/user/#/?c=AAUTH&state=' + state
+      window.location.href = 'http://sas.yzzx.org/#/login?c=AAUTH&state=' + state
     }
   },
   {
