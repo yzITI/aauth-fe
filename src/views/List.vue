@@ -69,7 +69,7 @@ export default {
     loading: false,
     list: [],
     app: {},
-    platforms: ['DINGTALK', 'GITHUB', 'QQ', 'XYZSAS']
+    platforms: ['DINGTALK', 'GITHUB', 'QQ', 'XYZSAS', 'FACEBOOK']
   }),
   mounted () {
     this.getList()
