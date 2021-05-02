@@ -7,7 +7,7 @@ import axios from 'axios'
 Vue.config.productionTip = false
 
 Vue.prototype.$ajax = axios.create({
-  baseURL: 'https://cn.api.aauth.link/'
+  baseURL: 'https://api.aauth.link/'
 })
 
 new Vue({
