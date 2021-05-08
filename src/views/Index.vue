@@ -26,7 +26,7 @@
         </div>
       </div>
     </v-expand-transition>
-    <a href="http://beian.miit.gov.cn/" style="color: #e4e6eb;">苏ICP备20040754号-1</a>
+    <p class="has-text-grey" style="color: #8c8c8c;"><a href="http://beian.miit.gov.cn/" style="color: #8c8c8c;">苏ICP备20040754号-1</a><br />copyright&copy南京世创工程技术有限公司</p>
   </div>
 </template>
 
@@ -73,7 +73,7 @@ img {
   width: 40vw;
   max-width: 250px;
 }
-a {
+p {
   position: fixed;
   bottom: 0;
   width: 100%;
